@@ -155,11 +155,11 @@ apt-get -y install nginx php5-fpm php5-cli
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/Apeachsan91/debian7/master/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/0613561761za/sshpanel/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<pre>Setup by Kaizen[A]</pre>" > /home/vps/public_html/index.html
+echo "<pre>Setup by Chayanin laoha[Jonus]</pre>" > /home/vps/public_html/index.html
 echo "<?php phpinfo(); ?>" > /home/vps/public_html/info.php
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/Apeachsan91/debian7/master/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/0613561761za/sshpanel/vps.conf"
 sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
 service php5-fpm restart
 service nginx restart
@@ -169,7 +169,7 @@ apt-get -y install openvpn iptables openssl
 cp -R /usr/share/doc/openvpn/examples/easy-rsa/ /etc/openvpn
 # easy-rsa
 if [[ ! -d /etc/openvpn/easy-rsa/2.0/ ]]; then
-	wget --no-check-certificate -O ~/easy-rsa.tar.gz https://github.com/Apeachsan91/debian7/raw/master/easy-rsa-2.2.0_master.tar.gz
+	wget --no-check-certificate -O ~/easy-rsa.tar.gz https://raw.githubusercontent.com/0613561761za/sshpanel/easy-rsa-2.2.0_master.tar.gz
     tar xzf ~/easy-rsa.tar.gz -C ~/
     mkdir -p /etc/openvpn/easy-rsa/2.0/
     cp ~/easy-rsa-2.2.0_master/easy-rsa/2.0/* /etc/openvpn/easy-rsa/2.0/
@@ -182,14 +182,14 @@ cp -u -p openssl-1.0.0.cnf openssl.cnf
 # ganti bits
 sed -i 's|export KEY_SIZE=1024|export KEY_SIZE=2048|' /etc/openvpn/easy-rsa/2.0/vars
 sed -i 's|export KEY_COUNTRY="US"|export KEY_COUNTRY="MY"|' /etc/openvpn/easy-rsa/2.0/vars
-sed -i 's|export KEY_PROVINCE="CA"|export KEY_PROVINCE="Sabah"|' /etc/openvpn/easy-rsa/2.0/vars
-sed -i 's|export KEY_CITY="SanFrancisco"|export KEY_CITY="KotaKinabalu"|' /etc/openvpn/easy-rsa/2.0/vars
-sed -i 's|export KEY_ORG="Fort-Funston"|export KEY_ORG="KaizenApeach"|' /etc/openvpn/easy-rsa/2.0/vars
-sed -i 's|export KEY_EMAIL="me@myhost.mydomain"|export KEY_EMAIL="hazboyz@gmail.com"|' /etc/openvpn/easy-rsa/2.0/vars
-sed -i 's|export KEY_EMAIL=mail@host.domain|export KEY_EMAIL=hazboyz@gmail.com|' /etc/openvpn/easy-rsa/2.0/vars
-sed -i 's|export KEY_CN=changeme|export KEY_CN="KaizenApeach"|' /etc/openvpn/easy-rsa/2.0/vars
-sed -i 's|export KEY_NAME=changeme|export KEY_NAME="KaizenApeach"|' /etc/openvpn/easy-rsa/2.0/vars
-sed -i 's|export KEY_OU=changeme|export KEY_OU=KaizenApeach|' /etc/openvpn/easy-rsa/2.0/vars
+sed -i 's|export KEY_PROVINCE="CA"|export KEY_PROVINCE="M"|' /etc/openvpn/easy-rsa/2.0/vars
+sed -i 's|export KEY_CITY="SanFrancisco"|export KEY_CITY="Krungtep"|' /etc/openvpn/easy-rsa/2.0/vars
+sed -i 's|export KEY_ORG="Fort-Funston"|export KEY_ORG="Kaiherehere"|' /etc/openvpn/easy-rsa/2.0/vars
+sed -i 's|export KEY_EMAIL="me@myhost.mydomain"|export KEY_EMAIL="0646363362za@gmail.com"|' /etc/openvpn/easy-rsa/2.0/vars
+sed -i 's|export KEY_EMAIL=mail@host.domain|export KEY_EMAIL=0646363362za@gmail.com|' /etc/openvpn/easy-rsa/2.0/vars
+sed -i 's|export KEY_CN=changeme|export KEY_CN="Kaiherehere"|' /etc/openvpn/easy-rsa/2.0/vars
+sed -i 's|export KEY_NAME=changeme|export KEY_NAME="Kaiherehere"|' /etc/openvpn/easy-rsa/2.0/vars
+sed -i 's|export KEY_OU=changeme|export KEY_OU=Kaiherehere|' /etc/openvpn/easy-rsa/2.0/vars
 # Buat PKI
 . /etc/openvpn/easy-rsa/2.0/vars
 . /etc/openvpn/easy-rsa/2.0/clean-all
@@ -241,7 +241,7 @@ cd /etc/openvpn/
 #Create OpenVPN Config
 mkdir -p /home/vps/public_html
 cat > /home/vps/public_html/client.ovpn <<-END
-# OpenVPN Configuration Created By Kaizen Apeach
+# OpenVPN Configuration Created By Chayanin Laoha
 client
 proto tcp
 persist-key
@@ -305,17 +305,17 @@ mkdir /var/lib/premium-script
 /etc/init.d/pptpd restart
 
 # install badvpn
-wget -O /usr/bin/badvpn-udpgw "https://github.com/Apeachsan91/debian7/raw/master/badvpn-udpgw"
+wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/0613561761za/sshpanel/badvpn-udpgw"
 if [ "$OS" == "x86_64" ]; then
-  wget -O /usr/bin/badvpn-udpgw "https://github.com/Apeachsan91/debian7/raw/master/badvpn-udpgw64"
+  wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/0613561761za/sshpanel/badvpn-udpgw64"
 fi
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.local
 chmod +x /usr/bin/badvpn-udpgw
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
 
 # install mrtg
-wget -O /etc/snmp/snmpd.conf "https://raw.githubusercontent.com/Apeachsan91/debian7/master/snmpd.conf"
-wget -O /root/mrtg-mem.sh "https://raw.githubusercontent.com/Apeachsan91/debian7/master/mrtg-mem.sh"
+wget -O /etc/snmp/snmpd.conf "https://raw.githubusercontent.com/0613561761za/sshpanel/snmpd.conf"
+wget -O /root/mrtg-mem.sh "https://raw.githubusercontent.com/0613561761za/sshpanel/mrtg-mem.sh"
 chmod +x /root/mrtg-mem.sh
 cd /etc/snmp/
 sed -i 's/TRAPDRUN=no/TRAPDRUN=yes/g' /etc/default/snmpd
@@ -323,7 +323,7 @@ service snmpd restart
 snmpwalk -v 1 -c public localhost 1.3.6.1.4.1.2021.10.1.3.1
 mkdir -p /home/vps/public_html/mrtg
 cfgmaker --zero-speed 100000000 --global 'WorkDir: /home/vps/public_html/mrtg' --output /etc/mrtg.cfg public@localhost
-curl "https://raw.githubusercontent.com/Apeachsan91/debian7/master/mrtg.conf" >> /etc/mrtg.cfg
+curl "https://raw.githubusercontent.com/0613561761za/sshpanel/mrtg.conf" >> /etc/mrtg.cfg
 sed -i 's/WorkDir: \/var\/www\/mrtg/# WorkDir: \/var\/www\/mrtg/g' /etc/mrtg.cfg
 sed -i 's/# Options\[_\]: growright, bits/Options\[_\]: growright/g' /etc/mrtg.cfg
 indexmaker --output=/home/vps/public_html/mrtg/index.html /etc/mrtg.cfg
@@ -350,7 +350,7 @@ service dropbear restart
 #Upgrade to Dropbear 2017
 cd
 apt-get install zlib1g-dev
-wget https://github.com/Apeachsan91/debian7/raw/master/dropbear-2017.75.tar.bz2
+wget https://github.com/0646363362za/sshpanel/dropbear-2017.75.tar.bz2
 bzip2 -cd dropbear-2017.75.tar.bz2 | tar xvf -
 cd dropbear-2017.75
 ./configure
@@ -362,7 +362,7 @@ service dropbear restart
 
 # install vnstat gui
 cd /home/vps/public_html/
-wget https://github.com/Apeachsan91/debian7/raw/master/vnstat_php_frontend-1.5.1.tar.gz
+wget https://github.com/0646363362za/sshpanel/vnstat_php_frontend-1.5.1.tar.gz
 tar xf vnstat_php_frontend-1.5.1.tar.gz
 rm vnstat_php_frontend-1.5.1.tar.gz
 mv vnstat_php_frontend-1.5.1 vnstat
@@ -435,14 +435,14 @@ refresh_pattern ^ftp: 1440 20% 10080
 refresh_pattern ^gopher: 1440 0% 1440
 refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
 refresh_pattern . 0 20% 4320
-visible_hostname Kaizen Apeach
+visible_hostname Chayanin Laoha
 END
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
 # install webmin
 cd
-wget "https://github.com/Apeachsan91/debian7/raw/master/webmin_1.801_all.deb"
+wget "https://github.com/0646363362za/sshpanel/webmin_1.801_all.deb"
 dpkg --install webmin_1.801_all.deb;
 apt-get -y -f install;
 sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
@@ -483,15 +483,15 @@ iptables-restore < /etc/iptables.up.rules
 
 # download script
 cd
-wget https://raw.githubusercontent.com/Apeachsan91/debian7/master/update.sh -O - -o /dev/null|sh
-wget https://raw.githubusercontent.com/Apeachsan91/debian7/master/update2 -O - -o /dev/null|sh
+wget https://raw.githubusercontent.com/0613561761za/sshpanel/update.sh -O - -o /dev/null|sh
+wget https://raw.githubusercontent.com/0613561761za/sshpanel/update2 -O - -o /dev/null|sh
 
 #install stunnel4
 cd
 apt-get update
 apt-get upgrade
 apt-get install stunnel4
-wget -O /etc/stunnel/stunnel.conf "https://raw.githubusercontent.com/Apeachsan91/debian7/master/stunnel.conf"
+wget -O /etc/stunnel/stunnel.conf "https://raw.githubusercontent.com/0613561761za/sshpanel/stunnel.conf"
 openssl genrsa -out key.pem 2048
 openssl req -new -x509 -key key.pem -out cert.pem -days 1095
 cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
