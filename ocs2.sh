@@ -20,21 +20,6 @@ fi
 # go to root
 cd
 
-MYIP=$(wget -qO- ipv4.icanhazip.com);
-
-# check registered ip
-wget -q -O daftarip https://raw.githubusercontent.com/Apeachsan91/setup/master/ip.txt
-if ! grep -w -q $MYIP daftarip; then
-	echo "Maaf, hanya IP yang terdaftar sahaja boleh menggunakan script ini!"
-	if [[ $vps = "VPS" ]]; then
-		echo "Powered by Kaizen Apeach"
-	else
-		echo "Powered by Kaizen Apeach"
-	fi
-	rm -f /root/daftarip
-	exit
-fi
-
 #https://github.com/adenvt/OcsPanels/wiki/tutor-debian
 
 clear
